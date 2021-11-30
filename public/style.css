@@ -1,4 +1,14 @@
+#dark {
+  color: rgb(230, 227, 227);
+  background-color: rgb(56, 56, 56);
+}
+
+a {
+color: rgb(230, 227, 227);
+}
+
 h1 {
     font-weight: lighter;
     font-style: italic;
   }
+  
