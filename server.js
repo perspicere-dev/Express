@@ -7,13 +7,14 @@ app.engine('hbs', hbs());
 app.set('view engine', 'hbs');
 
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.urlencoded({ extended: false }));
 
 app.get(['/', '/home'], (req, res) => {
   res.render('index');
 });
 
 app.get('/hello/:name', (req, res) => {
-  res.render('hello', {name: req.params.name });
+  res.render('hello', {name: req.params.name }); //"req.params.name" - tak przekazujemy serwerowi informacje
 });
 
 app.get('/about', (req, res) => {
@@ -31,6 +32,10 @@ app.get('/info', (req, res) => {
 app.get('/history', (req, res) => {
   res.render('history', { layout: 'dark'});
 });
+
+app.post('/contact/send-message', (req, res) => {
+    res.json(req.body);
+  });
 
 app.use((req, res) => {
   res.status(404).send('404 not found...');
